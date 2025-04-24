@@ -1,0 +1,5 @@
+gradio>=3.50
+transformers>=4.30
+scipy>=1.10
+bark>=0.0.1
+torch>=2.0
