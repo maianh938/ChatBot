@@ -1,10 +1,11 @@
-# tts.py
-# Placeholder for Coqui TTS/Bark TTS integration
-import pyttsx3
+from bark import SAMPLE_RATE, generate_audio
+import numpy as np
+import scipy.io.wavfile as wavfile
+import os
 
 def text_to_speech(text):
-    engine = pyttsx3.init()
-    audio_file = "output.wav"
-    engine.save_to_file(text, audio_file)
-    engine.runAndWait()
-    return audio_file
+    audio_array = generate_audio(text, history_prompt="v2/en_speaker_6")
+    os.makedirs("outputs", exist_ok=True)
+    output_path = f"outputs/audio_{int(time.time())}.wav"
+    wavfile.write(output_path, SAMPLE_RATE, audio_array)
+    return output_path
