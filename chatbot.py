@@ -1,8 +1,8 @@
-# chatbot.py
 from transformers import pipeline
 
+# Load DialoGPT-medium from Hugging Face
 chatbot = pipeline("conversational", model="microsoft/DialoGPT-medium")
 
-def get_chatbot_response(text):
-    result = chatbot(text)
-    return result['generated_text']
+def get_response(text):
+    response = chatbot(text)[0]['generated_text']
+    return response
